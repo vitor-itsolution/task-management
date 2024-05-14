@@ -9,7 +9,7 @@ using TaskManagement.WebApi.Endpoints;
 
 namespace Locamoto.WebApi.Enpoints.Motorcycle
 {
-    public class RemoveMotorcycleEnpoint : IEndpoint
+    public class RemovePersonalTaskEnpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {

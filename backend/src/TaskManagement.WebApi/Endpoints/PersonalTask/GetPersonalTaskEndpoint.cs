@@ -8,7 +8,7 @@ using TaskManagement.WebApi.Endpoints;
 
 namespace Locamoto.WebApi.Enpoints.Motorcycle
 {
-    public class GetMotorcycleByPlateEndpoint : IEndpoint
+    public class GetPersonalTaskEndpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
