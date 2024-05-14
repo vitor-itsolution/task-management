@@ -10,7 +10,7 @@ namespace Locamoto.WebApi.Enpoints.Motorcycle
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapPut("/task/{id}/state", async (
+            app.MapPatch("/task/{id}/state", async (
                [FromRoute] Guid id,
                [FromBody] UpdatePersonalTaskStateRequest request,
                IMediator mediator,
