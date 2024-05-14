@@ -10,6 +10,7 @@ namespace TaskManagement.WebApi.Endpoints.PersonalTask.Request
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime StartDay { get; set; }
+        public State State { get; set; }
         public DateTime? EndDay { get; set; }
     }
 }

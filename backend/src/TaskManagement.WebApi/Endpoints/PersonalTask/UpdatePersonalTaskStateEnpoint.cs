@@ -6,24 +6,24 @@ using TaskManagement.WebApi.Endpoints.PersonalTask.Request;
 
 namespace Locamoto.WebApi.Enpoints.Motorcycle
 {
-    public class UpdatePersonalTaskEnpoint : IEndpoint
+    public class UpdatePersonalTaskStateEnpoint : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapPut("/task/{id}", async (
+            app.MapPut("/task/{id}/state", async (
                [FromRoute] Guid id,
-               [FromBody] UpdatePersonalTaskRequest request,
+               [FromBody] UpdatePersonalTaskStateRequest request,
                IMediator mediator,
                CancellationToken cancellationToken) =>
            {
-               var command = new UpdatePersonalTaskCommand(id, request.Title, request.Description, request.StartDay, request.State, request.EndDay);
+               var command = new UpdatePersonalTaskStateCommand(id, request.State);
                var response = await mediator.Send(command, cancellationToken);
 
                if (response.IsValid()) return Results.NoContent();
 
                return Results.BadRequest(response.GetErrors());
            })
-           .WithName("UpdatePersonalTask")
+           .WithName("UpdatePersonalStateTask")
            .WithTags("Task")
            .WithOpenApi();
         }

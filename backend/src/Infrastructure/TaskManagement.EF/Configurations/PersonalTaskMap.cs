@@ -18,6 +18,7 @@ namespace TaskManagement.EF.Configurations
             builder.Property(p => p.Title).IsRequired();
             builder.Property(p => p.Description).IsRequired();
             builder.Property(p => p.StartDay).IsRequired();
+            builder.Property(p => p.State).IsRequired();
             builder.Property(p => p.EndDay);
             builder.Property(p => p.CreateDate).IsRequired();
             builder.Property(p => p.UpdateDate);
@@ -27,9 +28,9 @@ namespace TaskManagement.EF.Configurations
 
         private IList<PersonalTask> InitPersonalTask() => new List<PersonalTask>
         {
-            new PersonalTask("Set kick-off meeting", "Set kick-off meeting", new DateTime(2024,04,15)),
-            new PersonalTask("Final resource plan", "Final resource plan", new DateTime(2024,04,16)),
-            new PersonalTask("Api development", "Api development", new DateTime(2024,04,16))
+            new PersonalTask("Set kick-off meeting", "Set kick-off meeting", new DateTime(2024,04,15), State.Todo),
+            new PersonalTask("Final resource plan", "Final resource plan", new DateTime(2024,04,16), State.InProgress),
+            new PersonalTask("Api development", "Api development", new DateTime(2024,04,16), State.Done)
         };
     }
 }

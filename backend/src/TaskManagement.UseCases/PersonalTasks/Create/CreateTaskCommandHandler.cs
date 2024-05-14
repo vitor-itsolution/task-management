@@ -26,6 +26,7 @@ public class CreateTaskCommandHandler(IPersonalTaskRepository personalTaskReposi
                 title: request.Title,
                 description: request.Description,
                 startDay: request.StartDay,
+                state: request.State,
                 endDay: request.EndDay
             );
 

@@ -15,7 +15,7 @@ namespace Locamoto.Infra.PostgreSql.Queries
         {
             using var connection = this.GetConnection();
             //TODO: Change this query.
-            var commandText = $"select * from {_schema}.\"{_tableName}\" ";
+            var commandText = $"select * from \"{_schema}\".\"{_tableName}\" ";
              
             var list = await connection.QueryAsync<ListPersonalTaskDto>(commandText);
             return list.ToList();

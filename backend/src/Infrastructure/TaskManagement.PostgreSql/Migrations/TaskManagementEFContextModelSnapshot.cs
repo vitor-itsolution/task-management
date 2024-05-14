@@ -30,24 +30,27 @@ namespace TaskManagement.PostgreSql.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("EndDay")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("StartDay")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -56,26 +59,29 @@ namespace TaskManagement.PostgreSql.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cf609937-ecd6-47a9-b1c3-4472d3fd9593"),
-                            CreateDate = new DateTime(2024, 5, 13, 23, 19, 57, 465, DateTimeKind.Local).AddTicks(10),
+                            Id = new Guid("a9aa4c4f-3077-4276-867c-59fba7959d19"),
+                            CreateDate = new DateTime(2024, 5, 14, 0, 44, 41, 618, DateTimeKind.Local).AddTicks(2750),
                             Description = "Set kick-off meeting",
                             StartDay = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = 1,
                             Title = "Set kick-off meeting"
                         },
                         new
                         {
-                            Id = new Guid("17855c71-f149-4012-be9b-600bcef38ce4"),
-                            CreateDate = new DateTime(2024, 5, 13, 23, 19, 57, 465, DateTimeKind.Local).AddTicks(50),
+                            Id = new Guid("ac2be6ff-0c80-4d51-8624-f9c97a0abb4b"),
+                            CreateDate = new DateTime(2024, 5, 14, 0, 44, 41, 618, DateTimeKind.Local).AddTicks(2780),
                             Description = "Final resource plan",
                             StartDay = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = 2,
                             Title = "Final resource plan"
                         },
                         new
                         {
-                            Id = new Guid("03a3156c-5f02-4426-b413-bb4dec67a72a"),
-                            CreateDate = new DateTime(2024, 5, 13, 23, 19, 57, 465, DateTimeKind.Local).AddTicks(60),
+                            Id = new Guid("70bbcb75-affb-4c85-999a-77aea00ed55a"),
+                            CreateDate = new DateTime(2024, 5, 14, 0, 44, 41, 618, DateTimeKind.Local).AddTicks(2780),
                             Description = "Api development",
                             StartDay = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            State = 3,
                             Title = "Api development"
                         });
                 });
