@@ -14,8 +14,8 @@ namespace Locamoto.Infra.PostgreSql.Queries
         public async Task<IEnumerable<ListPersonalTaskDto>> GetAll()
         {
             using var connection = this.GetConnection();
-            //TODO: Change this query.
-            var commandText = $"select * from \"{_schema}\".\"{_tableName}\" ";
+           
+            var commandText = $"select \"Id\", \"Title\", \"Description\", \"StartDay\", \"EndDay\", \"State\", \"UpdateDate\", \"CreateDate\" from \"{_schema}\".\"{_tableName}\" ";
              
             var list = await connection.QueryAsync<ListPersonalTaskDto>(commandText);
             return list.ToList();
