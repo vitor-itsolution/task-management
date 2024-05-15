@@ -44,7 +44,6 @@ export default function TableComponent(props: TableProps) {
             <td className="flex justify-center">
                 {props.onSelected ? (
                     <button onClick={() => props.onSelected?.(personalTask)}
-                        disabled={personalTask.state === 3}
                         className={`
                           flex justify-center items-center
                           text-blue-600 rounded-full p-2 m-1
@@ -53,7 +52,6 @@ export default function TableComponent(props: TableProps) {
                 ) : false}
                 {props.onDeleted ? (
                     <button onClick={() => props.onDeleted?.(personalTask)}
-                        disabled={personalTask.state === 3}
                         className={`
                         flex justify-center items-center
                         text-red-500 rounded-full p-2 m-1

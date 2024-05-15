@@ -34,6 +34,7 @@ public class UpdatePersonalTaskCommandHandler(IPersonalTaskRepository personalTa
             personalTask.SetStartDay(request.StartDay);
             personalTask.SetEndDay(request.EndDay);
             personalTask.SetUpdateDate(DateTime.Now);
+            personalTask.SetState(request.State);
 
             await _personalTaskRepository.Update(personalTask);
             await _personalTaskRepository.SaveChanges();
