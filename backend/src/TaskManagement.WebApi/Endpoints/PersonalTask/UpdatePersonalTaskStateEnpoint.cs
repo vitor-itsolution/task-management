@@ -4,7 +4,7 @@ using TaskManagement.UseCases.PersonalTasks.Update;
 using TaskManagement.WebApi.Endpoints;
 using TaskManagement.WebApi.Endpoints.PersonalTask.Request;
 
-namespace Locamoto.WebApi.Enpoints.Motorcycle
+namespace TaskManagement.WebApi.Endpoints.PersonalTask
 {
     public class UpdatePersonalTaskStateEnpoint : IEndpoint
     {

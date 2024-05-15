@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManagement.UseCases.PersonalTasks.Remove;
 using TaskManagement.WebApi.Endpoints;
 
-namespace Locamoto.WebApi.Enpoints.Motorcycle
+namespace TaskManagement.WebApi.Endpoints.PersonalTask
 {
     public class RemovePersonalTaskEnpoint : IEndpoint
     {

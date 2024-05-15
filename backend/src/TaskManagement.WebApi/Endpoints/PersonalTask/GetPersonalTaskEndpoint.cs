@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManagement.UseCases.PersonalTasks.Queries;
 using TaskManagement.WebApi.Endpoints;
 
-namespace Locamoto.WebApi.Enpoints.Motorcycle
+namespace TaskManagement.WebApi.Endpoints.PersonalTask
 {
     public class GetPersonalTaskEndpoint : IEndpoint
     {
