@@ -2,7 +2,7 @@ using TaskManagement.UseCases.Core;
 
 namespace TaskManagement.UseCases.PersonalTasks.Create;
 
-public record CreatePersonalTaskCommand(string Title, string Description, DateTime StartDay, State State, DateTime? EndDay) : CommandRequest<CreatePersonalTaskCommandResponse>
+public record CreatePersonalTaskCommand(string Title, string Description, DateTime StartDay, State State, DateTime? EndDay = null) : CommandRequest<CreatePersonalTaskCommandResponse>
 {
     public override bool IsValid()
     {
