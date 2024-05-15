@@ -15,7 +15,7 @@ export default function usePersonalTask() {
     function getAll() {
         personalTaskService.getAll().then((personalTasks) => {
             setPersonalTasks(personalTasks)
-            showForm()
+            showlist()
         })
     }
 

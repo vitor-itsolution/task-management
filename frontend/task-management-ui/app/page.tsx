@@ -8,13 +8,12 @@ import usePersonalTask from "@/hooks/usePersonalTask";
 export default function Home() {
 
   const { 
-    visibleForm,
+    visibleList,
     personalTask, 
     personalTasks, 
     onCreateNewTask, 
     onDeleted, 
     onSelected, 
-    showForm, 
     showlist,
     onSave 
   } = usePersonalTask()
@@ -25,7 +24,7 @@ export default function Home() {
       bg-gradient-to-r from-blue-500 to-purple-500
     `}>
       <LayoutComponent title="Task lisk">
-        {visibleForm ? (
+        {visibleList ? (
           <>
             <div className="flex justify-end">
               <ButtonComponent colorName="green" className="mb-4"
