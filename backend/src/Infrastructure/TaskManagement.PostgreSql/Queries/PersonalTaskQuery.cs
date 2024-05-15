@@ -4,7 +4,7 @@ using TaskManagement.PostgreSql.Core;
 using TaskManagement.UseCases.PersonalTasks.Queries;
 using TaskManagement.UseCases.PersonalTasks.Queries.Dtos;
 
-namespace Locamoto.Infra.PostgreSql.Queries
+namespace TaskManagement.PostgreSql.Queries
 {
     public class PersonalTaskQuery(string connectionString) : QueryRepository(connectionString), IPersonalTaskQuery
     {

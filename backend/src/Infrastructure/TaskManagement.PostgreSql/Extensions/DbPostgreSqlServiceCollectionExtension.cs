@@ -1,9 +1,9 @@
-using Locamoto.Infra.PostgreSql.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskManagement.Domain.Repositories;
 using TaskManagement.Infra.EF.Contexts;
+using TaskManagement.PostgreSql.Queries;
 using TaskManagement.PostgreSql.Repositories;
 using TaskManagement.UseCases.PersonalTasks.Queries;
 
