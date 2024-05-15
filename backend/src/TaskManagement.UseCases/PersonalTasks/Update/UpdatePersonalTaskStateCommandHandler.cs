@@ -33,6 +33,7 @@ public class UpdatePersonalTaskStateCommandHandler(IPersonalTaskRepository perso
 
             personalTask.SetState(request.State);
             personalTask.SetUpdateDate(updateDate);
+            personalTask.SetEndDay(updateDate);
 
             if (request.State == State.Done)
                 personalTask.SetEndDay(updateDate);
