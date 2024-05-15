@@ -1,10 +1,12 @@
-"use moment"; 
+"use moment";
 import PersonalTask from "@/core/PersonalTask"
 import InputComponent from "./InputComponent"
-import { use, useState } from "react"
+import { useState } from "react"
 import ButtonComponent from "./ButtonComponent"
 
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 interface FormProps {
     personalTask: PersonalTask,
     onCanceled?: () => void
@@ -18,7 +20,7 @@ export default function FormComponent(props: FormProps) {
     const [state, setState] = useState(props.personalTask?.state ?? '')
     const [startDay, setStartDay] = useState(props.personalTask?.startDay ?? '')
     const [endDay, setEndDay] = useState(props.personalTask?.endDay ?? undefined)
- 
+
     return (
         <div>
             {id ? (
@@ -26,9 +28,15 @@ export default function FormComponent(props: FormProps) {
             ) : false}
             <InputComponent className="mb-4" label="Title" type="text" value={title} onChange={setTitle} />
             <InputComponent className="mb-4" label="Description" type="text" value={description} onChange={setTDescription} />
-            <InputComponent className="mb-4" label="StartDay" type="text" value={startDay} onChange={setStartDay} />
+            <div className="flex flex-col">
+                <label className="mb-4">Start Day</label>
+                <DatePicker className="mb border p-3 rounded-md " selected={startDay} onChange={(date: any) => setStartDay(date)} />
+            </div>
             {endDay ? (
-            <InputComponent className="mb-4" label="EndDay" type="text" value={endDay} onChange={setEndDay} />
+                <div className="flex flex-col py-4">
+                    <label className="mb-4">End Day</label>
+                    <DatePicker disabled className="mb border p-3 rounded-md " selected={endDay} onChange={(date: any) => setEndDay(date)} />
+                </div>
             ) : false}
             <div className="flex justify-end mt-7">
                 <ButtonComponent onClick={() => props.onPersonalTaskChanged?.(new PersonalTask(title, description, state, startDay, endDay, id))} className="mr-2" colorName="blue" >

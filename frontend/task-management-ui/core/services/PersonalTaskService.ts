@@ -16,13 +16,18 @@ export default class PersonalTaskService implements IPersonalTaskService {
     }
 
     save(personalTask: PersonalTask): Promise<PersonalTask> {
-        debugger
         var request = {
             Title: `${personalTask.title}`,
             Description: `${personalTask.description}`,
             State: 1,
-            StartDay: `${personalTask.startDay}`
+            StartDay: `${personalTask.startDay.toISOString().replace(/\.\d{3}Z$/, '')}`
         }
+        // var request = {
+        //     Title: `${personalTask.title}`,
+        //     Description: `${personalTask.description}`,
+        //     State: 1,
+        //     StartDay: `${personalTask.startDay}`
+        // }
         if (personalTask?.id)
             return axiosInstance.put(`task/${personalTask.id}`, request)
         else

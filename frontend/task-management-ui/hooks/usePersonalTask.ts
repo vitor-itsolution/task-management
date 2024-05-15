@@ -44,7 +44,6 @@ export default function usePersonalTask() {
     }
 
     function onFinished(personalTask: PersonalTask) {
-        debugger
         personalTaskService.updateState(personalTask.id, 3).then(() => {
             getAll();
         })
