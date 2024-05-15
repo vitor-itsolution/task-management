@@ -26,12 +26,13 @@ export default function TableComponent(props: TableProps) {
     function renderBody() {
         return props.personalTasks?.map((personalTask, i) => {
             const cssFinished = personalTask.state === 3 ? 'line-through' : ''
+            const shortDate = personalTask.startDay.toString().slice(0, 10)
             return (
                 <tr key={personalTask.id}
                     className={`${cssFinished} ${i % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}>
                     <td className="text-left p-4">{personalTask.title}</td>
                     <td className="text-left p-4">{personalTask.description}</td>
-                    <td className="text-left p-4">{personalTask.startDay.toString()}</td>
+                    <td className="text-left p-4">{shortDate}</td>
                     {showActions ? renderActions(personalTask) : false}
                 </tr>
             )
