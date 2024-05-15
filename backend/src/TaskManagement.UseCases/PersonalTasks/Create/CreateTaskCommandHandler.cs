@@ -40,7 +40,7 @@ public class CreateTaskCommandHandler(IPersonalTaskRepository personalTaskReposi
             response.AddError(ex.Message);
             return response;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             throw;
         }

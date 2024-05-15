@@ -13,7 +13,9 @@ export default function usePersonalTask() {
     useEffect(getAll, [])
 
     function getAll() {
-        personalTaskService.getAll().then((personalTasks) => {
+        personalTaskService.getAll().then((res) => {
+            var personalTasks: PersonalTask[] = []
+            res?.data?.map((p) => personalTasks.push(p))
             setPersonalTasks(personalTasks)
             showlist()
         })
@@ -23,20 +25,29 @@ export default function usePersonalTask() {
         setPersonalTask(personalTask)
         showForm()
     }
-    async function onDeleted(personalTask: PersonalTask) {
-        await personalTaskService.delete(personalTask)
-        getAll();
+
+    function onDeleted(personalTask: PersonalTask) {
+        personalTaskService.delete(personalTask).then(() => {
+            getAll();
+        })
     }
 
-    async function onSave(personalTask: PersonalTask) {
-        await personalTaskService.create(personalTask)
-        getAll()
+    function onSave(personalTask: PersonalTask) {
+        personalTaskService.save(personalTask).then(() => {
+            getAll()
+        })
     }
 
     function onCreateNewTask() {
-        debugger
         setPersonalTask(PersonalTask.empty())
         showForm()
+    }
+
+    function onFinished(personalTask: PersonalTask) {
+        debugger
+        personalTaskService.updateState(personalTask.id, 3).then(() => {
+            getAll();
+        })
     }
 
     return {
@@ -49,6 +60,7 @@ export default function usePersonalTask() {
         showlist,
         onSelected,
         onCreateNewTask,
-        onSave
+        onSave,
+        onFinished
     }
 }

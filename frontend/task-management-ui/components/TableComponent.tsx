@@ -1,10 +1,11 @@
 import PersonalTask from "@/core/PersonalTask";
-import { DeleteIcon, EditIcon } from "./IconComponent";
+import { DeleteIcon, EditIcon, SuccessIcon } from "./IconComponent";
 
 interface TableProps {
     personalTasks: PersonalTask[]
     onSelected?: (personalTask: PersonalTask) => void
     onDeleted?: (personalTask: PersonalTask) => void
+    onFinished?: (personalTask: PersonalTask) => void
 }
 export default function TableComponent(props: TableProps) {
 
@@ -24,12 +25,13 @@ export default function TableComponent(props: TableProps) {
 
     function renderBody() {
         return props.personalTasks?.map((personalTask, i) => {
+            const cssFinished = personalTask.state === 3 ? 'line-through' : ''
             return (
                 <tr key={personalTask.id}
-                    className={`${i % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}>
+                    className={`${cssFinished} ${i % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}>
                     <td className="text-left p-4">{personalTask.title}</td>
                     <td className="text-left p-4">{personalTask.description}</td>
-                    <td className="text-left p-4">{personalTask.startDay.toDateString()}</td>
+                    <td className="text-left p-4">{personalTask.startDay.toString()}</td>
                     {showActions ? renderActions(personalTask) : false}
                 </tr>
             )
@@ -40,19 +42,33 @@ export default function TableComponent(props: TableProps) {
         return (
             <td className="flex justify-center">
                 {props.onSelected ? (
-                    <button onClick={()=> props.onSelected?.(personalTask)} className={`
+                    <button onClick={() => props.onSelected?.(personalTask)}
+                        disabled={personalTask.state === 3}
+                        className={`
                           flex justify-center items-center
-                          text-green-600 rounded-full p-2 m-1
-                          hover:bg-purple-50
+                          text-blue-600 rounded-full p-2 m-1
+                          ${personalTask.state === 3 ? '' : 'hover:bg-purple-50'}
                       `}>{EditIcon}</button>
                 ) : false}
                 {props.onDeleted ? (
-                    <button onClick={()=> props.onDeleted?.(personalTask)} className={`
+                    <button onClick={() => props.onDeleted?.(personalTask)}
+                        disabled={personalTask.state === 3}
+                        className={`
                         flex justify-center items-center
                         text-red-500 rounded-full p-2 m-1
-                        hover:bg-purple-50
+                         ${personalTask.state === 3 ? '' : 'hover:bg-purple-50'}
                     `}>{DeleteIcon}</button>
                 ) : false}
+                {props.onFinished ? (
+                    <button onClick={() => props.onFinished?.(personalTask)}
+                        disabled={personalTask.state === 3}
+                        className={`
+                              flex justify-center items-center
+                              text-green-600 rounded-full p-2 m-1
+                              ${personalTask.state === 3 ? '' : 'hover:bg-purple-50'}
+                          `}>{SuccessIcon}</button>
+                ) : false}
+
             </td>
         )
     }

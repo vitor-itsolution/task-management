@@ -29,8 +29,13 @@ public class UpdatePersonalTaskStateCommandHandler(IPersonalTaskRepository perso
                 return response;
             }
 
+            var updateDate = DateTime.Now;
+
             personalTask.SetState(request.State);
-            personalTask.SetUpdateDate(DateTime.Now);
+            personalTask.SetUpdateDate(updateDate);
+
+            if (request.State == State.Done)
+                personalTask.SetEndDay(updateDate);
 
             await _personalTaskRepository.Update(personalTask);
             await _personalTaskRepository.SaveChanges();

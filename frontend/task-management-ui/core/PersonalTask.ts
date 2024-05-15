@@ -5,10 +5,10 @@ export default class PersonalTask {
     #title: string
     #description: string
     #state: number
-    #startDay: Date
-    #endDay?: Date
+    #startDay: string
+    #endDay?: string
 
-    constructor(title: string, description: string, state: number, startDay: Date, endDay?: Date | undefined, id?: string | undefined) {
+    constructor(title: string, description: string, state: number, startDay: string, endDay?: string | undefined, id?: string | undefined) {
         this.#id = id
         this.#title = title
         this.#description = description
@@ -22,7 +22,7 @@ export default class PersonalTask {
     }
 
     static empty(){
-        return new PersonalTask('', '', 1, new Date())
+        return new PersonalTask('', '', 1, new Date().toISOString().replace(/\.\d{3}Z$/, ''))
     }
 
     get title() {

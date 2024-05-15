@@ -15,7 +15,7 @@ namespace Locamoto.Infra.PostgreSql.Queries
         {
             using var connection = this.GetConnection();
            
-            var commandText = $"select \"Id\", \"Title\", \"Description\", \"StartDay\", \"EndDay\", \"State\", \"UpdateDate\", \"CreateDate\" from \"{_schema}\".\"{_tableName}\" ";
+            var commandText = $"select \"Id\", \"Title\", \"Description\", \"StartDay\", \"EndDay\", \"State\", \"UpdateDate\", \"CreateDate\" from \"{_schema}\".\"{_tableName}\" order by \"State\" asc ";
              
             var list = await connection.QueryAsync<ListPersonalTaskDto>(commandText);
             return list.ToList();

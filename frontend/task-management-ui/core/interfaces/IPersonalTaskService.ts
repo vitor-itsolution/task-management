@@ -1,8 +1,9 @@
+import PersonalTaskColectionResponse from "@/models/PersonalTaskColectionResponse";
 import PersonalTask from "../PersonalTask";
 
 export default interface IPersonalTaskService {
-    create(personalTask: PersonalTask): Promise<PersonalTask>
-    update(personalTask: PersonalTask): Promise<PersonalTask>
-    delete(personalTask: PersonalTask): Promise<void>
-    getAll(): Promise<PersonalTask[]>
-}
+    save(personalTask: PersonalTask): Promise<PersonalTask>
+    updateState(id: string, state: number): Promise<PersonalTask>
+    delete(personalTask: PersonalTask): Promise<any>
+    getAll(): Promise<PersonalTaskColectionResponse>
+}   

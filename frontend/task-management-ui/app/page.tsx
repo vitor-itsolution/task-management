@@ -15,7 +15,8 @@ export default function Home() {
     onDeleted, 
     onSelected, 
     showlist,
-    onSave 
+    onSave, 
+    onFinished
   } = usePersonalTask()
 
   return (
@@ -36,7 +37,8 @@ export default function Home() {
             <TableComponent
               personalTasks={personalTasks}
               onDeleted={onDeleted}
-              onSelected={onSelected}>
+              onSelected={onSelected}
+              onFinished={onFinished}>
             </TableComponent>
           </>
         ) : (
